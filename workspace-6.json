@@ -1,0 +1,50 @@
+// vim:ts=4:sw=4:et
+{
+    "border": "none",
+    "current_border_width": 0,
+    "floating": "auto_off",
+    "geometry": {
+       "height": 2068,
+       "width": 1886,
+       "x": 3863,
+       "y": 23
+    },
+    "marks": [],
+    "name": "Friends - Discord",
+    "percent": 0.5,
+    "swallows": [
+       {
+       // "class": "^discord$",
+       // "instance": "^discord$",
+       // "machine": "^jakearchpc$",
+       "title": "^Friends\\ \\-\\ Discord$"
+       // "window_role": "^browser\\-window$"
+       }
+    ],
+    "type": "con"
+}
+
+{
+    "border": "none",
+    "current_border_width": 0,
+    "floating": "auto_off",
+    "geometry": {
+       "height": 2036,
+       "width": 1886,
+       "x": 5771,
+       "y": 55
+    },
+    "marks": [],
+    "name": "Queen - Seaside Rendezvous - Remastered 2011",
+    "percent": 0.5,
+    "swallows": [
+       {
+       "class": "^Spotify$",
+       "instance": "^spotify$"
+       // "machine": "^jakearchpc$",
+       // "title": "^Queen\\ \\-\\ Seaside\\ Rendezvous\\ \\-\\ Remastered\\ 2011$"
+       }
+    ],
+    "type": "con"
+}
+
