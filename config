@@ -9,7 +9,7 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
-# exec_always xrandr --output HDMI-0 --off --output DP-0 --off --output DP-1 --off --output HDMI-1 --mode 1920x1080 --pos 3840x540 --rotate normal --output DP-2 --primary --mode 3840x2160 --pos 0x0 --rotate normal --output DP-3 --off --output None-1-1 --off --dpi 180
+exec_always xrandr --output HDMI-0 --off --output DP-0 --off --output DP-1 --off --output HDMI-1 --mode 3840x2160 --pos 3840x0 --rotate normal --output DP-2 --primary --mode 3840x2160 --pos 0x0 --rotate normal --output DP-3 --off --output None-1-1 --off --dpi 158
 
 set $mod Mod4
 
@@ -22,11 +22,16 @@ set $mon1 DP-2
 set $mon2 HDMI-1
 
 # Setting custom colour info, mainly for the bar:
+# White
+set $maincolor #eeeeeeeb
+set $backcolor #222222da
+set $maincolor2 #eeeeeeeb
+set $backcolor2 #222222da
 # Purple
-# set $maincolor #c35fdbeb
-# set $backcolor #401b50c0
-# set $maincolor2 #c35fdbeb
-# set $backcolor2 #401b50c0
+# set $maincolor #d37febeb
+# set $backcolor #4a365aca
+# set $maincolor2 #d37febeb
+# set $backcolor2 #4a365aca
 # Lightish Green
 # set $maincolor2 #52da92eb
 # set $backcolor2 #276745a0
@@ -34,10 +39,10 @@ set $mon2 HDMI-1
 # set $maincolor2 #25df63eb
 # set $backcolor2 #297041a0
 # Blue
-set $maincolor #4db9ffef
-set $backcolor #2c5a77a0
-set $maincolor2 #4db9ffef
-set $backcolor2 #2c5a77a0
+# set $maincolor #4db9ffef
+# set $backcolor #2c5a77a0
+# set $maincolor2 #4db9ffef
+# set $backcolor2 #2c5a77a0
 # Red
 # set $maincolor #ff4444ef
 # set $backcolor #772a2ca0
@@ -88,6 +93,9 @@ set $playerctllist vlc,%any,spotify
 bindsym XF86AudioPlay exec "playerctl -p $playerctllist play-pause"
 bindsym XF86AudioNext exec "playerctl -p $playerctllist next"
 bindsym XF86AudioPrev exec "playerctl -p $playerctllist previous"
+
+# Set key for removing transparency
+bindsym $mod+u exec --no-startup-id picom-trans -c -o 100
 
 # Screen shot / screen recorder binding
 bindsym $mod+y exec --no-startup-id deepin-screen-recorder
@@ -181,6 +189,19 @@ set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
 
+set $wsf1 "F1"
+set $wsf2 "F2"
+set $wsf3 "F3"
+set $wsf4 "F4"
+set $wsf5 "F5"
+set $wsf6 "F6"
+set $wsf7 "F7"
+set $wsf8 "F8"
+set $wsf9 "F9"
+set $wsf10 "F10"
+set $wsf11 "F11"
+set $wsf12 "F12"
+
 # switch to workspace
 bindsym $mod+1 workspace $ws1
 bindsym $mod+2 workspace $ws2
@@ -192,6 +213,19 @@ bindsym $mod+7 workspace $ws7
 bindsym $mod+8 workspace $ws8
 bindsym $mod+9 workspace $ws9
 bindsym $mod+0 workspace $ws10
+
+bindsym $mod+F1 workspace $wsf1
+bindsym $mod+F2 workspace $wsf2
+bindsym $mod+F3 workspace $wsf3
+bindsym $mod+F4 workspace $wsf4
+bindsym $mod+F5 workspace $wsf5
+bindsym $mod+F6 workspace $wsf6
+bindsym $mod+F7 workspace $wsf7
+bindsym $mod+F8 workspace $wsf8
+bindsym $mod+F9 workspace $wsf9
+bindsym $mod+F10 workspace $wsf10
+bindsym $mod+F11 workspace $wsf11
+bindsym $mod+F12 workspace $wsf12
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $ws1
@@ -205,6 +239,19 @@ bindsym $mod+Shift+8 move container to workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
 
+bindsym $mod+Shift+F1 move container to workspace $wsf1
+bindsym $mod+Shift+F2 move container to workspace $wsf2
+bindsym $mod+Shift+F3 move container to workspace $wsf3
+bindsym $mod+Shift+F4 move container to workspace $wsf4
+bindsym $mod+Shift+F5 move container to workspace $wsf5
+bindsym $mod+Shift+F6 move container to workspace $wsf6
+bindsym $mod+Shift+F7 move container to workspace $wsf7
+bindsym $mod+Shift+F8 move container to workspace $wsf8
+bindsym $mod+Shift+F9 move container to workspace $wsf9
+bindsym $mod+Shift+F10 move container to workspace $wsf10
+bindsym $mod+Shift+F11 move container to workspace $wsf11
+bindsym $mod+Shift+F12 move container to workspace $wsf12
+
 workspace $ws1 output $mon1
 workspace $ws2 output $mon1
 workspace $ws3 output $mon1
@@ -215,6 +262,19 @@ workspace $ws7 output $mon2
 workspace $ws8 output $mon2
 workspace $ws9 output $mon2
 workspace $ws10 output $mon2
+
+workspace $wsf1 output $mon1
+workspace $wsf2 output $mon1
+workspace $wsf3 output $mon1
+workspace $wsf4 output $mon1
+workspace $wsf5 output $mon1
+workspace $wsf6 output $mon1
+workspace $wsf7 output $mon2
+workspace $wsf8 output $mon2
+workspace $wsf9 output $mon2
+workspace $wsf10 output $mon2
+workspace $wsf11 output $mon2
+workspace $wsf12 output $mon2
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -268,7 +328,7 @@ bar {
         colors {
                 background #000000a0
 
-                focused_workspace  $backcolor $maincolor #ffffff
+                focused_workspace  $backcolor $maincolor #000000
                 active_workspace   #333333 #5f676a #ffffff
                 inactive_workspace #333333 #222222 #888888
                 urgent_workspace   #2f343a #900000 #ffffff
@@ -292,7 +352,7 @@ bar {
         colors {
                 background #000000a0
 
-                focused_workspace  $backcolor2 $maincolor2 #ffffff
+                focused_workspace  $backcolor2 $maincolor2 #000000
                 active_workspace   #333333 #5f676a #ffffff
                 inactive_workspace #333333 #222222 #888888
                 urgent_workspace   #2f343a #900000 #ffffff
@@ -312,3 +372,5 @@ exec --no-startup-id spotify
 exec --no-startup-id "i3-msg 'workspace 1'"
 
 exec --no-startup-id unclutter
+
+exec_always [[ -f ~/.Xmodmap ]] && xmodmap ~/.Xmodmap
