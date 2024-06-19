@@ -14,10 +14,10 @@
     "percent": 0.5,
     "swallows": [
        {
-       // "class": "^discord$",
+       //"class": "^discord$",
        // "instance": "^discord$",
        // "machine": "^jakearchpc$",
-       "title": "^Friends\\ \\-\\ Discord$"
+       "title": "\\-\\ Discord$"
        // "window_role": "^browser\\-window$"
        }
     ],
