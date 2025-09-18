@@ -9,8 +9,6 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
-exec_always xrandr --output HDMI-0 --off --output DP-0 --off --output DP-1 --off --output HDMI-1 --mode 3840x2160 --pos 3840x0 --rotate normal --output DP-2 --primary --mode 3840x2160 --pos 0x0 --rotate normal --output DP-3 --off --output None-1-1 --off --dpi 158
-
 set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
@@ -19,7 +17,7 @@ font pango:JetBrains Mono NF 8
 
 # Setting monitor variables:
 set $mon1 DP-2
-set $mon2 HDMI-1
+set $mon2 DP-0
 
 # Setting custom colour info, mainly for the bar:
 # White
@@ -108,7 +106,8 @@ floating_modifier $mod
 tiling_drag modifier titlebar
 
 # start a terminal
-bindsym $mod+Return exec wezterm
+bindsym $mod+Return exec ghostty
+bindsym $mod+Shift+Return exec wezterm
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -282,6 +281,7 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+x exec "systemctl sleep"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -314,7 +314,7 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
         output $mon1
-        font pango:JetBrains Mono NF 10
+        font pango:JetBrains Mono NF 16
 
         tray_output $mon1
 
@@ -338,7 +338,7 @@ bar {
 
 bar {
         output $mon2
-        font pango:JetBrains Mono NF 10
+        font pango:JetBrains Mono NF 16
 
         tray_output none
         
@@ -362,15 +362,17 @@ bar {
 
 gaps inner 12
 
-exec_always nitrogen --restore
+exec nitrogen --restore
 exec_always --no-startup-id picom
 exec_always xset r rate 280 32
 
 exec --no-startup-id "i3-msg 'workspace 6; append_layout ~/.config/i3/workspace-6.json; workspace 1'"
 exec --no-startup-id discord
-exec --no-startup-id spotify
+exec --no-startup-id spotify-launcher
 exec --no-startup-id "i3-msg 'workspace 1'"
 
 exec --no-startup-id unclutter
 
 exec_always [[ -f ~/.Xmodmap ]] && xmodmap ~/.Xmodmap
+
+exec_always xrandr --output $mon2 --mode 3840x2160 --pos 3840x0 --rotate normal --output $mon1 --primary --mode 3840x2160 --pos 0x0 --rotate normal --dpi 100
